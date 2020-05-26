@@ -1,0 +1,503 @@
+/* ------Ava------ */
+
+.user-ava {
+  grid-area: user-ava;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  height: fit-content;
+  position: relative;
+  max-width: 280px;
+}
+.user-ava__footer {
+  background-color: black;
+  opacity: 0;
+  position: absolute;
+  color: #ffffff;
+  border-radius: 4px;
+  height: 40px;
+  width: 280px;
+  bottom: 13px;
+}
+.user-ava:hover .user-ava__footer {
+  opacity: 0.5;
+}
+.user-ava__edit-icon {
+  position: absolute;
+  opacity: 0;
+  bottom: 23px;
+  right: 30px;
+}
+.user-ava:hover .user-ava__edit-icon {
+  opacity: 1;
+}
+.user-ava__photo {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  max-width: 280px;
+}
+
+/*  ------Popup Ava------ */
+
+.popup-ava {
+  width: 500px;
+  height: auto;
+  padding: 10px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.4);
+  border-radius: 5px;
+  z-index: 201;
+}
+.popup-ava__photo {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+.popup-ava__close-button {
+  position: fixed;
+  width: 20px;
+  cursor: pointer;
+  opacity: 0.4;
+  right: 15px;
+  top: 15px;
+  z-index: 250;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.modal-overlay:hover .popup-ava__close-button {
+  opacity: 1;
+}
+.closed {
+  display: none;
+}
+
+/*  ------Стилизация слайдера------ */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  background-color: #ccc;
+}
+
+/* input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  
+  input[type="range"]:focus {
+    outline: none;
+  }
+  
+  input[type="range"]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  } */
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 12px;
+  border-radius: 8px;
+  background: #fad64e;
+  border: 0.5px solid #000000;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+/* input[type="range"]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer; 
+  }*/
+
+input[type="range"]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 40%;
+  background: rgb(128, 128, 128);
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: lightgrey;
+}
+
+input[type="range"]:focus::-slider-runnable-track {
+  background: lightgrey;
+}
+
+/* input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+  }
+  
+  input[type="range"]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type="range"]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type="range"]:focus::-ms-fill-lower {
+    background: #3071a9;
+  }
+  input[type="range"]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type="range"]:focus::-ms-fill-upper {
+    background: #cccccc;
+  }
+  input[type="range"]:focus::-moz-fill-upper {
+    background: #cccccc;
+  }
+  input[type="range"]:focus::-fill-upper {
+    background: #cccccc;
+  } */
+
+/* ------Edit User Ava------ */
+
+.edit-user-ava {
+  display: grid;
+  grid-template-areas:
+    "edit-box box-settings"
+    "edit-box buttons";
+  column-gap: 30px;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.4);
+  border-radius: 5px;
+  z-index: 201;
+  grid-area: box;
+}
+.edit-box__image {
+  object-fit: cover;
+  width: 500px;
+  max-height: 720px;
+  height: auto;
+}
+.box-settings {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  margin-right: 15px;
+  grid-area: box-settings;
+}
+.edit-user-ava__buttons {
+  grid-area: buttons;
+  margin-left: 30px;
+}
+.box-settings__slider {
+  width: 100%;
+}
+.box-settings__slider_width {
+  width: 100%;
+}
+.edit-box__input .edit-box__input_img-url {
+  display: block;
+  width: 480px;
+  max-height: 46px;
+  padding: 10px 10px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4;
+  color: #000;
+  margin-top: 6px;
+  background: #fff none;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.edit-box__input_select-file {
+  display: block;
+  width: 480px;
+  max-height: 46px;
+  padding: 10px 10px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4;
+  color: #000;
+  margin-top: 6px;
+  background: #fff none;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.hide {
+  display: none !important;
+}
+.edit-user-ava__btn {
+  display: inline-block;
+  padding: 14px 20px;
+  width: 150px;
+  /* margin-bottom: 0; */
+  margin-top: 6px;
+  font-weight: normal;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  background: #fad64e;
+  color: #3f3f3f;
+  border: none;
+  border-radius: 2.8rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    -webkit-transform 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+  will-change: transform;
+}
+.edit-user-ava__btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.edit-user-ava__btn:active {
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.edit-user-ava__btn:hover:not(:disabled) {
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ------Media------ */
+
+@media screen and (max-width: 860px) {
+  .user-ava__footer {
+    width: 276.5px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .user-ava__footer {
+    display: none;
+  }
+  .user-ava__edit-icon {
+    width: 30px;
+    opacity: 1;
+    right: 12px;
+    bottom: 16px;
+    border: 1px dashed white;
+  }
+  .user-ava {
+    width: 100px;
+    border: 1px dashed black;
+    padding: 5px;
+  }
+  .popup-ava {
+    width: 420px;
+  }
+  .edit-box__image {
+    width: 370px;
+  }
+  .edit-box__input_select-file,
+  .edit-box__input .edit-box__input_img-url {
+    width: 350px;
+  }
+  .edit-user-ava {
+    width: auto;
+    display: grid;
+    grid-template-areas:
+      "edit-box"
+      "box-settings"
+      "buttons";
+  }
+  .box-settings__slider {
+    width: 380px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  .edit-user-ava__buttons {
+    display: flex;
+    margin-left: 35px;
+    margin-bottom: 200px;
+    justify-content: space-between;
+  }
+  .edit-user-ava__btn_margin {
+    margin-left: 72.5px;
+  }
+  .box-settings {
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .user-ava__footer {
+    display: none;
+  }
+  .user-ava__edit-icon {
+    width: 30px;
+    border: 1px solid white;
+  }
+  .user-ava {
+    width: 90px;
+    border: 1px dashed black;
+    padding: 5px;
+  }
+  .popup-ava {
+    width: 420px;
+  }
+  .edit-user-ava {
+    width: 920px;
+  }
+  .edit-box__image {
+    width: 370px;
+  }
+  .edit-box__input_select-file,
+  .edit-box__input .edit-box__input_img-url {
+    width: 350px;
+  }
+  .edit-user-ava {
+    width: auto;
+    display: grid;
+    grid-template-areas:
+      "edit-box"
+      "box-settings"
+      "buttons";
+  }
+  .box-settings__slider {
+    width: 380px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  .edit-user-ava__buttons {
+    display: flex;
+    margin-left: 42.5px;
+    margin-bottom: 200px;
+    justify-content: space-between;
+  }
+  .edit-user-ava__btn_margin {
+    margin-left: 72.5px;
+  }
+  .box-settings {
+    height: 280px;
+  }
+}
+
+@media screen and (min-height: 750px) and (max-height: 900px) {
+  .edit-box__image {
+    width: 420px;
+  }
+  .edit-box__input_select-file,
+  .edit-box__input .edit-box__input_img-url {
+    width: 400px;
+  }
+}
+
+@media screen and (min-height: 750px) and (max-height: 900px) and (max-width: 540px) {
+  .box-settings__slider {
+    width: 420px;
+  }
+  .edit-user-ava__btn_margin {
+    margin-left: 118px;
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .edit-box__image {
+    width: 380px;
+  }
+  .edit-box__input_select-file,
+  .edit-box__input .edit-box__input_img-url {
+    width: 360px;
+  }
+  .popup-ava {
+    width: 420px;
+  }
+}
+
+@media screen and (max-height: 800px) and (max-width: 540px) and (min-width: 420px) {
+  .edit-box__image {
+    width: 280px;
+  }
+  .edit-box__input_select-file,
+  .edit-box__input .edit-box__input_img-url {
+    width: 270px;
+  }
+  .popup-ava {
+    width: 400px;
+  }
+  .box-settings__slider {
+    width: 280px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+  }
+  .edit-user-ava__buttons {
+    display: flex;
+    margin-left: 0px;
+  }
+  .edit-user-ava__btn_margin {
+    margin-left: 50px;
+  }
+  .edit-box__input .edit-box__input_img-url {
+    padding: 4px 4px;
+    font-size: 14px;
+  }
+  .edit-box__input_select-file {
+    padding: 4px;
+  }
+  .box-settings {
+    height: 250px;
+  }
+}

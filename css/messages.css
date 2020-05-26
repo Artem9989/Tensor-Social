@@ -1,0 +1,119 @@
+  /* Настройка сообщений */
+  .profile__dialogues_disp_flex {
+      display: grid;
+      grid-template-rows: auto auto;
+  }
+
+  .profile__dialogues_size {
+      width: 100%;
+      height: 100%;
+  }
+
+  .profile__dialogues_margin {
+      margin-top: 5px;
+  }
+
+  .profile__dialogues-header_disp_flex {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      justify-items: flex-start;
+      align-items: center;
+  }
+
+  .profile__dialogues-header-name_position {
+      padding-left: 10px;
+      padding-top: 2px;
+  }
+
+  .profile__dialogues-messages_disp_flex {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      overflow: auto;
+  }
+
+  .profile__dialogues-friend_disp_grid {
+      display: grid;
+      grid-template-columns: 1px 36px 246px;
+  }
+
+  .profile__dialogues-friend_line_before:before {
+      content: '';
+      position: relative;
+      width: 274px;
+      height: 1px;
+      background: #dadae6;
+      margin-left: 5px;
+      margin-bottom: 5px;
+  }
+
+  .profile__dialogues-friend_size {
+      max-height: 63px;
+      height: 100%;
+      width: 100%;
+  }
+
+  .profile__dialogues-friend-photo_size {
+      width: 24px;
+      height: 24px;
+      border-radius: 80px;
+      overflow: hidden;
+  }
+
+  .profile__dialogues-friend-margin {
+      margin-top: 6px;
+  }
+
+  .profile__dialogues-friend-photo_position {
+      margin-left: 6px;
+      margin-top: 6px;
+  }
+
+  .profile__dialogues-friend-photo-img_size {
+      width: 24px;
+      height: 34px;
+  }
+
+  .profile__dialogues-friend-information_disp_grid {
+      display: grid;
+      grid-template-rows: 18px auto;
+  }
+
+  .profile__dialogues-friend-information_size {
+      width: 96%;
+  }
+
+  .profile__dialogues-friend-header_disp_flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .profile__dialogues-friend-who {
+      color: #496899;
+  }
+
+  .profile__dialogues-friend-last-time {
+      font-size: 10px;
+  }
+
+  .profile__dialogues-friend-message {
+      white-space: normal;
+      color: black;
+      max-height: 36px;
+      text-align: left;
+      overflow: hidden;
+  }
+
+  @media screen and (max-width: 450px) {
+      .profile__dialogues-friend_disp_grid {
+          grid-template-columns: 1px 36px auto;
+      }
+
+
+      .profile__dialogues-friend_line_before:before {
+          width: 510px;
+      }
+  }
